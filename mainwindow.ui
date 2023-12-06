@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1201</width>
+      <height>851</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="MainLayout" stretch="9,1">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QTabWidget" name="CtrlGroup">
+       <property name="styleSheet">
+        <string notr="true">QTabBar::tab {
+	height:	60
+}</string>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="ImageWidget">
+        <attribute name="title">
+         <string>图片格式转换</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>1161</width>
+           <height>661</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="ImageLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="IFileReadBtn">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>音频文件</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#IFileReadBtn.QPushButton {
+	color: #aaa;
+	border:	4 dashed #aaa;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}
+#IFileReadBtn.QPushButton:hover {
+	color: #ddd;
+	border:	4 dashed #ccc;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>拖拽文件到此处</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="H0">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="IReadListGroup">
+              <property name="title">
+               <string>输入列表</string>
+              </property>
+              <widget class="QTableView" name="IReadListView">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>31</y>
+                 <width>546</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">/*QHeaderView::section {
+font: 20px &quot;微软雅黑&quot;;
+font-weight:bold;
+color: rgb(24, 100, 249);
+padding-left: 4px;
+border: 1px solid #e2e2e2;
+background-color:#cddffe;
+}
+ 
+QTableView{
+border:none;
+color: rgb(119, 119, 119);
+gridline-color:#e2e2e2;
+}
+ 
+QTableView::item::selected{
+background-color:#cddffe;
+color:rgb(51, 51, 51);
+}*/
+ 
+/*QTableView 左上角样式*/
+/*QTableView QTableCornerButton::section {
+background-color:#cddffe;
+border: 1px solid #e2e2e2;
+}*/
+ </string>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="IReadSettingsGroup">
+              <property name="title">
+               <string>输出设置</string>
+              </property>
+              <widget class="QWidget" name="verticalLayoutWidget_5">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>541</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="IHV0">
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="IHVH0">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="ILabel0">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>输出文件夹</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="XOutputDir" name="IOutputDir">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string>C:\</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="IHVH1">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="ILabel1">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>统一设置输出格式</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="IOutputFormat">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">#POutputFormat.QComboBox QAbstractItemView::item {
+	height: 26px;
+}</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="IVerticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="IHVH2">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="IDelOneTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>删除选中</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="IDelAllTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>清空列表</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="IHVH3">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="IStartTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>开始</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="IEndTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>终止</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="ICheckLogBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>查看日志</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="AudioWidget">
+        <attribute name="title">
+         <string>音频格式转换</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>1161</width>
+           <height>661</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="AudioLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="AFileReadBtn">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>音频文件</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#AFileReadBtn.QPushButton {
+	color: #aaa;
+	border:	4 dashed #aaa;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}
+#AFileReadBtn.QPushButton:hover {
+	color: #ddd;
+	border:	4 dashed #ccc;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>拖拽文件到此处</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="H1">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="AReadListGroup">
+              <property name="title">
+               <string>输入列表</string>
+              </property>
+              <widget class="QTableView" name="AReadListView">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>31</y>
+                 <width>546</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">/*QHeaderView::section {
+font: 20px &quot;微软雅黑&quot;;
+font-weight:bold;
+color: rgb(24, 100, 249);
+padding-left: 4px;
+border: 1px solid #e2e2e2;
+background-color:#cddffe;
+}
+ 
+QTableView{
+border:none;
+color: rgb(119, 119, 119);
+gridline-color:#e2e2e2;
+}
+ 
+QTableView::item::selected{
+background-color:#cddffe;
+color:rgb(51, 51, 51);
+}*/
+ 
+/*QTableView 左上角样式*/
+/*QTableView QTableCornerButton::section {
+background-color:#cddffe;
+border: 1px solid #e2e2e2;
+}*/
+ </string>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="AReadSettingsGroup">
+              <property name="title">
+               <string>输出设置</string>
+              </property>
+              <widget class="QWidget" name="verticalLayoutWidget_6">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>541</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="AHV0">
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="AHVH0">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="ALabel0">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>输出文件夹</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="XOutputDir" name="AOutputDir">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string>C:\</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="AHVH1">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="ALabel1">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>统一设置输出格式</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="AOutputFormat">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">#MOutputFormat.QComboBox QAbstractItemView::item {
+	height: 26px;
+}</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="AVerticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="AHVH2">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="ADelOneTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>删除选中</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="ADelAllTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>清空列表</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="AHVH3">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="AStartTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>开始</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="AEndTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>终止</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="ACheckLogBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>查看日志</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="VideoWidget">
+        <attribute name="title">
+         <string>视频格式转换</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>1161</width>
+           <height>661</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="VideoLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="VFileReadBtn">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>音频文件</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#VFileReadBtn.QPushButton {
+	color: #aaa;
+	border:	4 dashed #aaa;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}
+#VFileReadBtn.QPushButton:hover {
+	color: #ddd;
+	border:	4 dashed #ccc;
+	border-radius: 10;
+	background-color: rgba(255, 255, 255, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>拖拽文件到此处</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="H2">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="VReadListGroup">
+              <property name="title">
+               <string>输入列表</string>
+              </property>
+              <widget class="QTableView" name="VReadListView">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>31</y>
+                 <width>546</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">/*QHeaderView::section {
+font: 20px &quot;微软雅黑&quot;;
+font-weight:bold;
+color: rgb(24, 100, 249);
+padding-left: 4px;
+border: 1px solid #e2e2e2;
+background-color:#cddffe;
+}
+ 
+QTableView{
+border:none;
+color: rgb(119, 119, 119);
+gridline-color:#e2e2e2;
+}
+ 
+QTableView::item::selected{
+background-color:#cddffe;
+color:rgb(51, 51, 51);
+}*/
+ 
+/*QTableView 左上角样式*/
+/*QTableView QTableCornerButton::section {
+background-color:#cddffe;
+border: 1px solid #e2e2e2;
+}*/
+ </string>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="VReadSettingsGroup">
+              <property name="title">
+               <string>输出设置</string>
+              </property>
+              <widget class="QWidget" name="verticalLayoutWidget_7">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>541</width>
+                 <height>381</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="VHV0">
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="VHVH0">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="VLabel0">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>输出文件夹</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="XOutputDir" name="VOutputDir">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string>C:\</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="VHVH1">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="VLabel1">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>统一设置输出格式</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="VOutputFormat">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">#VOutputFormat.QComboBox QAbstractItemView::item {
+	height: 26px;
+}</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="VVerticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="VHVH2">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="VDelOneTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>删除选中</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="VDelAllTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>清空列表</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="VHVH3">
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="VStartTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>开始</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="VEndTaskBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>终止</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="VCheckLogBtn">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>查看日志</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="InfoGroup">
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>1141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="value">
+         <number>24</number>
+        </property>
+        <property name="textVisible">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>XOutputDir</class>
+   <extends>QLineEdit</extends>
+   <header>xoutputdir.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
