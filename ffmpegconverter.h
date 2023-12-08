@@ -7,6 +7,8 @@
 #include <QProcess>
 #include <QFile>
 #include <QTextStream>
+#include <QCoreApplication>
+#include <QDateTime>
 
 #include <QThread>
 #include <QDebug>
@@ -31,8 +33,7 @@ public:
 signals:
 
 private:
-    bool RunFFMpegCommand(const QString &Command);
-    bool CheckConversionResult();
+    bool RunFFMpegCommand(const QStringList &CommandList);
 };
 
 #endif // FFMPEGCONVERTER_H

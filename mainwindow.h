@@ -43,14 +43,6 @@ public:
     void dragEnterEvent(QDragEnterEvent* event) override;
     void dropEvent(QDropEvent* event) override;
 
-signals:
-
-private slots:
-    bool StartImageConversion();
-//    bool StartAudioConversion();
-//    bool StartVideoConversion();
-
-
 private:
     Ui::MainWindow *ui;
     const unsigned int MainWindowDefaultSize_Width = 1200;
@@ -75,7 +67,6 @@ private:
 
     void InitUI();
     void InitConnect();
-    void InitTheard();
     void AddTasksToList(QList<QString>& urls);
 
     QGroupBox* MainGroup;
@@ -94,6 +85,10 @@ private:
     QFuture<bool> IConvertThread;
     QFuture<bool> AConvertThread;
     QFuture<bool> VConvertThread;
+
+    bool StartImageConversion();
+    bool StartAudioConversion();
+    bool StartVideoConversion();
 };
 
 #endif // MAINWINDOW_H

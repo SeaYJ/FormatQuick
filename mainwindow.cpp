@@ -48,17 +48,6 @@ void MainWindow::dropEvent(QDropEvent *event)
     }
 }
 
-bool MainWindow::StartImageConversion()
-{
-    // 从 QStandardItemModel 中获取参数
-//    QModelIndex index = IReadListViewDataModel->index(0, 0); // 假设参数在第一行第一列
-    QString inputFile = "";
-    QString outputFile = "";
-
-    // 调用 FFMpegConverter 类的 ConvertImage 函数
-    return FFMpegConverter.ConvertImage(inputFile, outputFile);
-}
-
 void MainWindow::InitUI()
 {
     // 设置主窗口标题
@@ -204,18 +193,35 @@ void MainWindow::InitConnect()
 
     // 任务执行相关
     connect(ui->IStartTaskBtn, &QPushButton::clicked, this, [=]() {
-        qDebug() << "开始执行任务！";
-        // 处理一下线程退出问题！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        // 解决 QObject::connect: Cannot queue arguments of type 'QVector<int>' 问题
+        qRegisterMetaType<QVector<int>>("QVector<int>");
+
         IConvertThread = QtConcurrent::run(this, &MainWindow::StartImageConversion);
     });
     connect(ui->IEndTaskBtn, &QPushButton::clicked, this, [=]() {
         qDebug() << "结束执行任务！";
     });
 
-}
+    connect(ui->AStartTaskBtn, &QPushButton::clicked, this, [=]() {
+        // 解决 QObject::connect: Cannot queue arguments of type 'QVector<int>' 问题
+        qRegisterMetaType<QVector<int>>("QVector<int>");
 
-void MainWindow::InitTheard()
-{
+        AConvertThread = QtConcurrent::run(this, &MainWindow::StartAudioConversion);
+    });
+    connect(ui->AEndTaskBtn, &QPushButton::clicked, this, [=]() {
+        qDebug() << "结束执行任务！";
+    });
+
+    connect(ui->VStartTaskBtn, &QPushButton::clicked, this, [=]() {
+        // 解决 QObject::connect: Cannot queue arguments of type 'QVector<int>' 问题
+        qRegisterMetaType<QVector<int>>("QVector<int>");
+
+        VConvertThread = QtConcurrent::run(this, &MainWindow::StartVideoConversion);
+    });
+    connect(ui->VEndTaskBtn, &QPushButton::clicked, this, [=]() {
+        qDebug() << "结束执行任务！";
+    });
+
 }
 
 void MainWindow::AddTasksToList(QList<QString> &urls)
@@ -312,7 +318,7 @@ void MainWindow::AddTasksToList(QList<QString> &urls)
         // 整合一条文件信息
         QList<QStandardItem *> newRowListViewData;
         newRowListViewData.append(new QStandardItem("未完成"));
-        newRowListViewData.append(new QStandardItem(FileInfo.fileName()));
+        newRowListViewData.append(new QStandardItem(FileInfo.completeBaseName()));
         newRowListViewData.append(new QStandardItem(FileInfo.suffix().toUpper()));
 
         if (CurrentWidgetIndex == CurrentWidgetIsImage)
@@ -435,4 +441,133 @@ void MainWindow::DeleteAllTaskRows(QAbstractItemModel *DataModel)
         return ;
 
     DataModel->removeRows(0, DataModel->rowCount());
+}
+
+bool MainWindow::StartImageConversion()
+{
+    for (int row = 0; row < IReadListViewDataModel->rowCount(); row++)
+    {
+        // 获取标志位信息值索引
+        QModelIndex FinishedFlagIndex = IReadListViewDataModel->index(row, 0);
+
+        // 以及完成就不需要再进行转换
+        if (IReadListViewDataModel->item(row, 0)->data(Qt::DisplayRole).toString() == QString("已完成"))
+            continue;
+
+        // 获取目标格式、文件基础名和文件绝对路径
+        QString TargetFormat = IReadListViewDataModel->item(row, 3)->data(Qt::DisplayRole).toString();
+        QString FileBaseName = IReadListViewDataModel->item(row, 1)->data(Qt::DisplayRole).toString();
+        QString InputFilePath = IReadListViewDataModel->item(row, 4)->data(Qt::DisplayRole).toString();
+
+        // 生成 OutputFilePath
+        QString UniqueID = "_" + QString::number(row+1);
+        QString OutputFilePath = (ui->IOutputDir->text()) + FileBaseName + UniqueID + "." + TargetFormat.toLower();
+
+        // 在异步任务中调用转换函数
+        bool ConversionResult = FFMpegConverter.ConvertImage(InputFilePath, OutputFilePath);
+
+        // 处理转换结果
+        if (!ConversionResult)
+        {
+            // 转换失败，可以在这里进行相应的处理
+        }
+        else
+        {
+            IReadListViewDataModel->setData(FinishedFlagIndex, QString("已完成"));
+        }
+
+        // 检查任务是否被取消
+        if (QThread::currentThread()->isInterruptionRequested())
+        {
+            qDebug() << "Conversion task is cancelled.";
+            return false;
+        }
+    }
+    return true;
+}
+
+bool MainWindow::StartAudioConversion()
+{
+    for (int row = 0; row < AReadListViewDataModel->rowCount(); row++)
+    {
+        // 获取标志位信息值索引
+        QModelIndex FinishedFlagIndex = AReadListViewDataModel->index(row, 0);
+
+        // 以及完成就不需要再进行转换
+        if (AReadListViewDataModel->item(row, 0)->data(Qt::DisplayRole).toString() == QString("已完成"))
+            continue;
+
+        // 获取目标格式、文件基础名和文件绝对路径
+        QString TargetFormat = AReadListViewDataModel->item(row, 3)->data(Qt::DisplayRole).toString();
+        QString FileBaseName = AReadListViewDataModel->item(row, 1)->data(Qt::DisplayRole).toString();
+        QString InputFilePath = AReadListViewDataModel->item(row, 4)->data(Qt::DisplayRole).toString();
+
+        // 生成 OutputFilePath
+        QString UniqueID = "_" + QString::number(row+1);
+        QString OutputFilePath = (ui->IOutputDir->text()) + FileBaseName + UniqueID + "." + TargetFormat.toLower();
+
+        // 在异步任务中调用转换函数
+        bool ConversionResult = FFMpegConverter.ConvertAudio(InputFilePath, OutputFilePath);
+
+        // 处理转换结果
+        if (!ConversionResult)
+        {
+            // 转换失败，可以在这里进行相应的处理
+        }
+        else
+        {
+            AReadListViewDataModel->setData(FinishedFlagIndex, QString("已完成"));
+        }
+
+        // 检查任务是否被取消
+        if (QThread::currentThread()->isInterruptionRequested())
+        {
+            qDebug() << "Conversion task is cancelled.";
+            return false;
+        }
+    }
+    return true;
+}
+
+bool MainWindow::StartVideoConversion()
+{
+    for (int row = 0; row < VReadListViewDataModel->rowCount(); row++)
+    {
+        // 获取标志位信息值索引
+        QModelIndex FinishedFlagIndex = VReadListViewDataModel->index(row, 0);
+
+        // 以及完成就不需要再进行转换
+        if (VReadListViewDataModel->item(row, 0)->data(Qt::DisplayRole).toString() == QString("已完成"))
+            continue;
+
+        // 获取目标格式、文件基础名和文件绝对路径
+        QString TargetFormat = VReadListViewDataModel->item(row, 3)->data(Qt::DisplayRole).toString();
+        QString FileBaseName = VReadListViewDataModel->item(row, 1)->data(Qt::DisplayRole).toString();
+        QString InputFilePath = VReadListViewDataModel->item(row, 4)->data(Qt::DisplayRole).toString();
+
+        // 生成 OutputFilePath
+        QString UniqueID = "_" + QString::number(row+1);
+        QString OutputFilePath = (ui->IOutputDir->text()) + FileBaseName + UniqueID + "." + TargetFormat.toLower();
+
+        // 在异步任务中调用转换函数
+        bool ConversionResult = FFMpegConverter.ConvertVideo(InputFilePath, OutputFilePath);
+
+        // 处理转换结果
+        if (!ConversionResult)
+        {
+            // 转换失败，可以在这里进行相应的处理
+        }
+        else
+        {
+            VReadListViewDataModel->setData(FinishedFlagIndex, QString("已完成"));
+        }
+
+        // 检查任务是否被取消
+        if (QThread::currentThread()->isInterruptionRequested())
+        {
+            qDebug() << "Conversion task is cancelled.";
+            return false;
+        }
+    }
+    return true;
 }
